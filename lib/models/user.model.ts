@@ -1,16 +1,22 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-	id: { type: String},
-	username: { type: String },
+	id: { type: String },
 	email: { type: String },
 	firstName: { type: String },
 	lastName: { type: String },
 	image: { type: String },
-	onboarded: {
-		type: { type: Boolean , default: false },
+	onBoarded: {
+		type: Boolean,
+		default: false,
 	},
-	address: { type: String },
+	address: {
+		street: { type: String },
+		city: { type: String },
+		state: { type: String },
+		zipCode: { type: String },
+		countryOrRegion: { type: String },
+	},
 	phoneNumber: { type: String },
 	wishlist: [
 		{

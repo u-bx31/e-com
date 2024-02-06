@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;
@@ -13,8 +14,8 @@
 		--popover: 0 0% 100%;
 		--popover-foreground: 222.2 84% 4.9%;
 
-		--primary: 222.2 47.4% 11.2%;
-		--primary-foreground: 210 40% 98%;
+		--primary: 234 88% 68%;
+		--primary-foreground: 234 88% 8%;
 
 		--secondary: 210 40% 96.1%;
 		--secondary-foreground: 222.2 47.4% 11.2%;
@@ -68,10 +69,10 @@
 
 @layer base {
 	* {
-		@apply border-border;
+		@apply border-border ;
 	}
 	body {
-		@apply bg-background text-foreground;
+		@apply bg-background text-foreground min-w-[280px];
 	}
 }
 @layer components {
@@ -79,3 +80,15 @@
 		@apply fixed top-0 z-30 flex bg-gray-400 w-full items-center justify-between px-6 py-3;
 	}
 }
+.account-form_image-label {
+  @apply cursor-pointer flex h-24 w-24 items-center bg-gray-100 justify-center rounded-full !important;
+}
+
+.account-form_image-input {
+  @apply cursor-pointer file:text-blue-400 !important;
+}
+
+.account-form_input {
+  @apply p-4 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 focus-visible:ring-transparent !important;
+}
+

@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
 	return (
 		<div
-			className={`bg-gray-900 w-100 h-screen`}>
+			className={`bg-gray-50 w-100 `}>
 			{children}
 		</div>
 	);
