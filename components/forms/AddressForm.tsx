@@ -19,8 +19,10 @@ import { UpdateUser } from "@/lib/actions/user.action";
 import { usePathname } from "next/navigation";
 
 const AddressFrom = ({ user }: any) => {
-	const { nextStep } = useStepper();
+
+	const { nextStep,isLastStep, } = useStepper();
 	const pathname = usePathname();
+
 	const form = useForm<z.infer<typeof userAddressValidation>>({
 		resolver: zodResolver(userAddressValidation),
 		defaultValues: {
@@ -34,19 +36,20 @@ const AddressFrom = ({ user }: any) => {
 
 	const onSubmit = async (values: z.infer<typeof userAddressValidation>) => {
 		nextStep();
+		await UpdateUser({
+			userId : user.id,
+			firstName: user.firstName,
+			lastName: user.lastName,
+			image: user.profilePicture ,
+			phoneNumber: user.phoneNumber ,
 
-		// await UpdateUser({
-		// 	userId : user.id,
-		// 	firstName: user.firstName,
-		// 	lastName: user.lastName,
-		// 	image: user.image,
-		// 	phoneNumber: user.phoneNumber,
-		// 	address: values?.address ,
-		// 	city: values.city,
-		// 	state: values.state,
-		// 	countryOrRegion: values.countryOrRegion,
-		// 	path : pathname
-		// });
+			address: values?.address ,
+			city: values.city,
+			state: values.state,
+			countryOrRegion: values.countryOrRegion,
+			stepperLast : isLastStep,
+			path : pathname, 
+		});
 		console.log(values);
 	};
 

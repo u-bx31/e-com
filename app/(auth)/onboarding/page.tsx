@@ -11,31 +11,30 @@ export const metadata: Metadata = {
 };
 
 const Onboarding = async () => {
-	// const user = await currentUser();
+	const user = await currentUser();
 
-	// if (!user) return null;
+	if (!user) return null;
 
-	// const userInfo = await fetchUser(user.id);
+	const userInfo = await fetchUser(user.id);
 
-	// if (userInfo?.onboarded) redirect("/");
+	if (userInfo?.onBoarded) redirect("/");
 
-	// const userData = {
-	// 	id: user?.id,
-	// 	objectId: userInfo?._id,
-	// 	username: userInfo?.username || user?.username,
-	// 	name: userInfo?.name || user?.firstName,
-	// 	bio: userInfo?.bio || "",
-	// 	image: userInfo?.image || user?.imageUrl,
-	// };
+	const userData = {
+		id: user?.id,
+		objectId: userInfo?._id,
+		firstName: userInfo?.firstName || user?.firstName,
+		lastName: userInfo?.lastName || user?.lastName,
+		email: userInfo?.email || user?.emailAddresses[0].emailAddress,
+		image: userInfo?.image || user?.imageUrl,
+	};
 	return (
 		<main className="container flex max-w-3xl flex-col justify-start px-1 py-10 xs:px-5 sm:px-10 sm:py-20">
-			<h1 className="text-gray-950 font-bold text-4xl">Onboarding</h1>
-			<p className="mt-3 text-base text-gray-950">
+			<h1 className="text-primary font-bold text-6xl">Onboarding</h1>
+			<p className="mt-3 text-base font-medium text-gray-950">
 				Complete your profile now to join ConnectCrew
 			</p>
 			<section className="mt-9 bg-white rounded-lg px-3 xs:px-5 sm:px-10 py-10 shadow-cd">
-				{/* <AccountProfile user={userData} btnTitle="continue" /> */}
-				<StepperDemo />
+				<StepperDemo user={JSON.stringify(userData)}/>
 			</section>
 		</main>
 	);

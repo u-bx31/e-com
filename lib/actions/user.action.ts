@@ -18,6 +18,7 @@ interface UserProps {
 	zipCode?: string;
 	state?: string;
 	path: string;
+	stepperLast? : boolean
 }
 
 export async function fetchUser(userId: string) {
@@ -40,6 +41,7 @@ export async function UpdateUser({
 	zipCode,
 	state,
 	phoneNumber,
+	stepperLast = false,
 	path,
 }: UserProps): Promise<void> {
 	ConnectionToDb();
@@ -55,7 +57,7 @@ export async function UpdateUser({
 				city: city?.toLowerCase(),
 				state: state?.toLowerCase(),
 				countryOrRegion: countryOrRegion?.toLowerCase(),
-				onboarded: true,
+				onBoarded: stepperLast ,
 			},
 			{ upsert: true }
 		);

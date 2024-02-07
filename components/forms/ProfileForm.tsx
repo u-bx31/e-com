@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+'use client'
 import {
 	Form,
 	FormControl,
@@ -29,7 +29,6 @@ interface UserProps {
 		objectId: string;
 		firstName: string;
 		lastName: string;
-		username: string;
 		email: string;
 		phoneNumber: number;
 		image?: string;
@@ -37,7 +36,6 @@ interface UserProps {
 }
 const ProfileForm = ({ user }: UserProps) => {
 	const { nextStep } = useStepper();
-
 	const [files, setFiles] = useState<File[]>([]);
 	const { startUpload } = useUploadThing("imageUploader");
 	const router = useRouter();
@@ -50,7 +48,6 @@ const ProfileForm = ({ user }: UserProps) => {
 			email: user?.email || "",
 			firstName: user?.firstName || "",
 			lastName: user?.lastName || "",
-			userName: user?.username || "",
 			phoneNumber: user?.phoneNumber || undefined,
 		},
 	});
@@ -66,16 +63,14 @@ const ProfileForm = ({ user }: UserProps) => {
 				values.profilePicture = imgRes[0].url;
 			}
 		}
-		// await UpdateUser({
-		// 	userId : user.id,
-		// 	firstName: values.firstName,
-		// 	lastName: values.lastName,
-		// 	image: values.profilePicture || '',
-		// 	phoneNumber: values.phoneNumber || '',
-		// 	path : pathname
-		// });
-
-		console.log(values);
+		await UpdateUser({
+			userId : user.id,
+			firstName: values.firstName,
+			lastName: values.lastName,
+			image: values.profilePicture || '',
+			phoneNumber: values.phoneNumber || '',
+			path : pathname
+		});
 	};
 
 	const handleImage = (
