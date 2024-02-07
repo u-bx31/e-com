@@ -8,12 +8,15 @@ import { FilterQuery, SortOrder } from "mongoose";
 
 interface UserProps {
 	userId: string;
-	username: string;
 	firstName: string;
 	lastName: string;
 	image: string;
-	address: string;
 	phoneNumber: string;
+	address?: string;
+	city?: string;
+	countryOrRegion?: string;
+	zipCode?: string;
+	state?: string;
 	path: string;
 }
 
@@ -28,11 +31,14 @@ export async function fetchUser(userId: string) {
 
 export async function UpdateUser({
 	userId,
-	username,
 	firstName,
 	lastName,
 	image,
 	address,
+	city,
+	countryOrRegion,
+	zipCode,
+	state,
 	phoneNumber,
 	path,
 }: UserProps): Promise<void> {
@@ -41,12 +47,14 @@ export async function UpdateUser({
 		await User.findOneAndUpdate(
 			{ id: userId },
 			{
-				username: username.toLowerCase(),
 				firstName: firstName.toLowerCase(),
 				lastName: lastName.toLowerCase(),
 				image: image,
-				address: address.toLowerCase(),
 				phoneNumber: phoneNumber,
+				address: address?.toLowerCase(),
+				city: city?.toLowerCase(),
+				state: state?.toLowerCase(),
+				countryOrRegion: countryOrRegion?.toLowerCase(),
 				onboarded: true,
 			},
 			{ upsert: true }

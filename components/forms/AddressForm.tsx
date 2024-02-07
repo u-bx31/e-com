@@ -12,31 +12,49 @@ import { Input } from "@/components/ui/input";
 import { useStepper } from "@/components/ui/stepper";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import StepperFormActions from "./StepperFormAction";
+import StepperFormActions from "../../app/(auth)/onboarding/_components.tsx/StepperFormAction";
 import { userAddressValidation } from "@/lib/validations/user";
 import { Textarea } from "@/components/ui/textarea";
+import { UpdateUser } from "@/lib/actions/user.action";
+import { usePathname } from "next/navigation";
 
 const AddressFrom = ({ user }: any) => {
 	const { nextStep } = useStepper();
-
+	const pathname = usePathname();
 	const form = useForm<z.infer<typeof userAddressValidation>>({
 		resolver: zodResolver(userAddressValidation),
 		defaultValues: {
-			address: user?.address || "",
-			city: user?.city || "",
-			state: user?.state || "",
-			zipCode: user?.zipCode || "",
-			countryOrRegion: user?.countryOrRegion || "",
+			address: user?.address || undefined,
+			city: user?.city || undefined,
+			state: user?.state || undefined,
+			zipCode: user?.zipCode || undefined,
+			countryOrRegion: user?.countryOrRegion || undefined,
 		},
 	});
 
-	function onSubmit(data: z.infer<typeof userAddressValidation>) {
+	const onSubmit = async (values: z.infer<typeof userAddressValidation>) => {
 		nextStep();
-		alert("next 2 sub");
-	}
+
+		// await UpdateUser({
+		// 	userId : user.id,
+		// 	firstName: user.firstName,
+		// 	lastName: user.lastName,
+		// 	image: user.image,
+		// 	phoneNumber: user.phoneNumber,
+		// 	address: values?.address ,
+		// 	city: values.city,
+		// 	state: values.state,
+		// 	countryOrRegion: values.countryOrRegion,
+		// 	path : pathname
+		// });
+		console.log(values);
+	};
 
 	return (
 		<Form {...form}>
+			<h1 className="text-base text-center text-white bg-gray-500 rounded-md font-normal">
+				This section are optional
+			</h1>
 			<form
 				onSubmit={form.handleSubmit((e: any) => onSubmit(e))}
 				className="flex flex-col justify-start gap-5">
@@ -52,7 +70,7 @@ const AddressFrom = ({ user }: any) => {
 								<Input
 									className="account-form_input"
 									type="text"
-									placeholder="Country or Region"
+									placeholder="Country or Region "
 									{...field}
 								/>
 							</FormControl>
@@ -106,7 +124,7 @@ const AddressFrom = ({ user }: any) => {
 								<FormControl>
 									<Input
 										className="account-form_input"
-										type="number"
+										type="text"
 										placeholder=""
 										{...field}
 									/>

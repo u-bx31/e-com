@@ -7,7 +7,7 @@ export default authMiddleware({
 		"/api/webhook/clerk",
 		"/not-found",
 	],
-	ignoredRoutes: ["/api/webhook/clerk"],
+	ignoredRoutes: ["/api/webhook/clerk",'/api/uploadthing'],
 });
 
 // Stop Middleware running on static files

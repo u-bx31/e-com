@@ -6,8 +6,8 @@ import {
 	useStepper,
 } from "@/components/ui/stepper";
 import { ClipboardList, User } from "lucide-react";
-import ProfileForm from "./ProfileForm";
-import AddressFrom from "./AddressForm";
+import ProfileForm from "@/components/forms/ProfileForm";
+import AddressFrom from "@/components/forms/AddressForm";
 import { Button } from "@/components/ui/button";
 
 export default function StepperDemo({ user }: any) {
@@ -28,7 +28,7 @@ export default function StepperDemo({ user }: any) {
 	];
 	return (
 		<div className="flex w-full flex-col gap-4">
-			<Stepper initialStep={0} steps={steps}>
+			<Stepper isClickable={false} initialStep={0} steps={steps}>
 				{steps.map((step, index) => {
 					return <StepperItem key={step.id}>{step.form}</StepperItem>;
 				})}

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -17,10 +18,10 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { isBase64Image } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useStepper } from "@/components/ui/stepper";
-import StepperFormActions from "./StepperFormAction";
+import StepperFormActions from "../../app/(auth)/onboarding/_components.tsx/StepperFormAction";
 import { userProfileValidation } from "@/lib/validations/user";
 import { PlusCircle } from "lucide-react";
-
+import { UpdateUser } from "@/lib/actions/user.action";
 
 interface UserProps {
 	user: {
@@ -45,22 +46,19 @@ const ProfileForm = ({ user }: UserProps) => {
 	const form = useForm({
 		resolver: zodResolver(userProfileValidation),
 		defaultValues: {
-			profilePicture: user?.image || "",
+			profilePicture: user?.image || undefined,
 			email: user?.email || "",
 			firstName: user?.firstName || "",
 			lastName: user?.lastName || "",
 			userName: user?.username || "",
-			phoneNumber: user?.phoneNumber || "",
+			phoneNumber: user?.phoneNumber || undefined,
 		},
 	});
 	const onSubmit = async (values: z.infer<typeof userProfileValidation>) => {
-
-		nextStep()
+		nextStep();
 		const blob = values?.profilePicture;
 
-		console.log(values);
-
-		const hasImageChanged = isBase64Image(blob || '');
+		const hasImageChanged = isBase64Image(blob || "");
 
 		if (hasImageChanged) {
 			const imgRes = await startUpload(files);
@@ -69,18 +67,15 @@ const ProfileForm = ({ user }: UserProps) => {
 			}
 		}
 		// await UpdateUser({
-		// 	userId: user.id,
-		// 	username: values.username,
-		// 	name: values.name,
-		// 	bio: values.bio,
-		// 	image: values.profile_photo,
-		// 	path: pathname,
+		// 	userId : user.id,
+		// 	firstName: values.firstName,
+		// 	lastName: values.lastName,
+		// 	image: values.profilePicture || '',
+		// 	phoneNumber: values.phoneNumber || '',
+		// 	path : pathname
 		// });
-		// if (pathname === "/profile/edit") {
-		// 	router.back();
-		// } else {
-		// 	router.push("/");
-		// }
+
+		console.log(values);
 	};
 
 	const handleImage = (
@@ -105,7 +100,7 @@ const ProfileForm = ({ user }: UserProps) => {
 	return (
 		<Form {...form}>
 			<form
-				onSubmit={form.handleSubmit((e:any) => onSubmit(e))}
+				onSubmit={form.handleSubmit((e: any) => onSubmit(e))}
 				className="flex flex-col justify-start gap-5">
 				<FormField
 					control={form.control}
@@ -203,8 +198,8 @@ const ProfileForm = ({ user }: UserProps) => {
 							<FormControl>
 								<Input
 									className="account-form_input"
-									type="number"
-									placeholder="example: 123-234-421-23"
+									type="text"
+									placeholder="example: +1 687-75-45-06 (optional)"
 									{...field}
 								/>
 							</FormControl>
@@ -212,8 +207,8 @@ const ProfileForm = ({ user }: UserProps) => {
 						</FormItem>
 					)}
 				/>
-				
-				<StepperFormActions/>
+
+				<StepperFormActions />
 			</form>
 		</Form>
 	);
