@@ -26,14 +26,14 @@ const Navbar = ({ user }: any) => {
 		setIsOpen(!isOpen);
 	};
 	return (
-		<nav className="container bg-white border-gray-200 dark:bg-gray-900 !px-0 md:!px-5">
+		<nav className="container h-[60px] md:h-full bg-white border-gray-200 dark:bg-gray-900 !px-0 md:!px-5">
 			<div
 				className={`flex flex-wrap items-center justify-between mx-auto lg:p-4 `}>
 				<div className="flex flex-row gap-2 items-center">
 					<div className="md:hidden">
 						<button onClick={handleClick}>
 							<svg
-								className={`ham hamRotate ham4 ${isOpen && "active"} w-12 sm:w-16`}
+								className={`ham hamRotate ham4 ${isOpen && "active"} w-12 md:w-16`}
 								viewBox="0 0 100 100">
 								<path
 									className="line top"
@@ -49,7 +49,7 @@ const Navbar = ({ user }: any) => {
 					</div>
 					<a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
 						<Logo
-							className={"w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 stroke-[2px]"}
+							className={"w-12 h-12 sm:w-16 md:h-16 lg:w-20 lg:h-20 stroke-[2px]"}
 						/>
 					</a>
 				</div>
@@ -107,11 +107,11 @@ const Navbar = ({ user }: any) => {
 				<div
 					className={`justify-between ${
 						isOpen
-							? "z-30 fixed flex top-16 bottom-0 flex-col gap-2 overflow-y-auto backdrop-blur-lg bg-white/30 shadow-inner"
+							? "z-50 fixed flex top-[60px] bottom-0 flex-col gap-2 overflow-y-auto backdrop-blur-lg bg-white/30 shadow-inner"
 							: "hidden items-center"
 					} w-full md:flex md:w-auto md:order-1`}
 					id="navbar-user">
-					<ul className="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
+					<ul className="flex flex-col gap-6 md:gap-0 font-medium p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 ">
 						{Navlinks.map((item: any) => {
 							const isActive =
 								(pathname.includes(item.route) && item.route.length > 1) ||
