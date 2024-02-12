@@ -22,7 +22,7 @@ const config = {
 				cd: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
 			},
 			screens: {
-				xs: "400px",
+				xs: "320px",
 			},
 			colors: {
 				border: "hsl(var(--border))",

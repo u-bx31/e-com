@@ -67,7 +67,7 @@ const Navbar = ({ user }: any) => {
 							</DropdownMenuTrigger>
 							<DropdownMenuContent>
 								<DropdownMenuLabel className="text-center text-base font-bold">
-									{curentUser.lastName[0].toUpperCase()}.
+									{curentUser?.lastName[0].toUpperCase()}.
 									{curentUser?.firstName}
 								</DropdownMenuLabel>
 								<DropdownMenuSeparator />
