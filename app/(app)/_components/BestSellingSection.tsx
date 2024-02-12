@@ -1,6 +1,7 @@
 import { BestSelling } from "@/constants";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
+import DynamicImage from "@/components/shared/dynamic/blur";
 
 const BestSellingSection = () => {
 	return (
@@ -22,15 +23,11 @@ const BestSellingSection = () => {
 				{BestSelling.map((items: any) => {
 					return (
 						<div className="flex flex-col overflow-hidden w-full xs:h-56 sm:w-60 sm:h-60  lg:w-[300px] lg:h-[436px]">
-							<div className="w-100 h-48 lg:h-80 relative">
-								<Image
-									loading='lazy'
-									className="object-cover rounded-lg"
-									src={items.img}
-									alt="img"
-									fill
-								/>
-							</div>
+							<DynamicImage
+								src={items.img}
+								parentClassName={'w-100 h-48 lg:h-80 relative'}
+								childClassName={"rounded-lg object-cover h-48 lg:h-80"}
+							/>
 							<h3 className="font-bold text-lg truncate text-gray-950 w-100 mt-3">
 								{items.title}
 							</h3>

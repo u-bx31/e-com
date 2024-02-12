@@ -1,3 +1,4 @@
+import withPlaiceholder from "@plaiceholder/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -22,6 +23,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "placehold.co",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ]
   },
   webpack(config) {
@@ -35,4 +40,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPlaiceholder(nextConfig);

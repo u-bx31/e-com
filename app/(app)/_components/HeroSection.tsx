@@ -29,12 +29,10 @@ const HeroSection = () => {
 				</div>
 			</div>
 			<div className="absolute md:relative z-0 w-100 md:w-[643px] h-full md:!h-auto lg:!h-[512px]">
-				<Image
+				<img
 					src={"/assets/images/hero_img.jpg"}
 					alt="heroImg"
 					className="!w-100 md:!w-[644px] !h-full rounded-2xl !object-cover shadow-lg opacity-30 md:opacity-100"
-					width={1980}
-					height={800}
 				/>
 			</div>
 		</div>
