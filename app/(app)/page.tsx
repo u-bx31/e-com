@@ -2,6 +2,7 @@ import Navbar from "@/components/shared/Navbar";
 import HeroSection from "./_components/HeroSection";
 import BestSellingSection from "./_components/BestSellingSection";
 import NewProductsSection from "./_components/NewProductsSection";
+import CategoriesSection from "./_components/CategoriesSection";
 
 export default function Home() {
 	return (
@@ -9,6 +10,7 @@ export default function Home() {
 			<HeroSection />
 			<BestSellingSection />
 			<NewProductsSection />
+			<CategoriesSection />
 		</div>
 	);
 }
