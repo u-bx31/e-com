@@ -5,6 +5,7 @@ import NewProductsSection from "./_components/NewProductsSection";
 import CategoriesSection from "./_components/CategoriesSection";
 import ReviewsSection from "./_components/ReviewsSection";
 import AdvProduct from "./_components/AdvProduct";
+import ServicesSection from "./_components/ServicesSection";
 
 export default function Home() {
 	return (
@@ -15,6 +16,7 @@ export default function Home() {
 			<CategoriesSection />
 			<ReviewsSection />
 			<AdvProduct />
+			<ServicesSection />
 		</div>
 	);
 }

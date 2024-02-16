@@ -1,6 +1,6 @@
 const AdvProduct = () => {
 	return (
-		<div className="bg-black  p-10 lg:p-14 w-full flex gap-5 flex-col lg:flex-row rounded-3xl">
+		<div className="bg-black  p-10 lg:p-14 w-full flex gap-5 flex-col justify-start xl:justify-center lg:flex-row rounded-3xl">
 			<div className="pt-3 flex flex-col gap-4 md:gap-8 lg:w-[443px]">
 				<h3 className="text-base text-green-700 font-semibold">Categories</h3>
 				<h1 className="text-white text-center lg:text-start text-2xl md:text-4xl lg:text-5xl font-semibold !leading-10 lg:!leading-[60px]">
