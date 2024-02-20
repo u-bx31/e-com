@@ -1,4 +1,3 @@
-import AccountProfile from "@/components/forms/AccountProfile";
 import { fetchUser } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";
 import { Metadata } from "next";
