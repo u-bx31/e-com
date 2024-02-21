@@ -44,10 +44,10 @@ const CategoriesSection = () => {
 					</div>
 					<div className="relative overflow-hidden group w-full h-40 md:w-80 md:h-52 lg:w-96 lg:h-72">
 						<div className="categories-card_overlay_all">
-							<div className="flex items-center justify-center gap-2">
+							<Link href={'/categories'} className="flex items-center justify-center gap-2">
 								<h2 className=" categories-card_header">View More</h2>
 								<ArrowRightCircle className="w-6 h-6 stroke-white group-hover:stroke-[3px] transition-all ease-in" />
-							</div>
+							</Link>
 						</div>
 						<img
 							alt="img"

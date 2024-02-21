@@ -4,7 +4,7 @@
 
 @layer base {
 	.font-outline-1 {
-		-webkit-text-stroke: .7px white;
+		-webkit-text-stroke: 0.7px white;
 		letter-spacing: 2px;
 		word-spacing: -2px;
 	}
@@ -96,14 +96,15 @@
 	@apply p-4 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 focus-visible:ring-transparent !important;
 }
 
-.categories-card_overlay{
-	@apply flex items-center justify-center w-full h-full absolute bg-gray-950/60 group-hover:bg-gray-950/70 rounded-3xl transition-all ease-linear
+/* home page */
+.categories-card_overlay {
+	@apply flex items-center justify-center w-full h-full absolute bg-gray-950/60 group-hover:bg-gray-950/70 rounded-3xl transition-all ease-linear;
 }
-.categories-card_overlay_all{
-	@apply flex items-center justify-center w-full h-full absolute bg-indigo-700/60 group-hover:bg-indigo-700/90 rounded-3xl transition-all ease-linear
+.categories-card_overlay_all {
+	@apply flex items-center justify-center w-full h-full absolute bg-indigo-700/60 group-hover:bg-indigo-700/90 rounded-3xl transition-all ease-linear;
 }
-.categories-card_header{
-	@apply text-base lg:text-xl group-hover:lg:text-2xl font-bold text-white transition-all ease-in
+.categories-card_header {
+	@apply text-base lg:text-xl group-hover:lg:text-2xl font-bold text-white transition-all ease-in;
 }
 
 
