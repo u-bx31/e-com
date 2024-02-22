@@ -1,7 +1,15 @@
+import FilterSection from "./_components/FilterSction";
+import ProductsSection from "./_components/ProductsSection";
+import TopSection from "./_components/TopSection";
+
 const Products = () => {
 	return (
-		<div className="container">
-			<h2>Products 31</h2>
+		<div className="md:container px-2 flex flex-col gap-9 md:gap-14 mb-14 ">
+			<TopSection />
+			<div className="flex flex-row gap-3">
+				<FilterSection />
+				<ProductsSection />
+			</div>
 		</div>
 	);
 };
