@@ -12,7 +12,7 @@ export default async function RootLayout({
 	const userInfo = await fetchUser(user?.id || "");
 
 	return (
-		<div>
+		<div className="flex flex-col gap-3">
 			<Navbar user={JSON.stringify(userInfo)} />
 			{children}
 			<Footer />
