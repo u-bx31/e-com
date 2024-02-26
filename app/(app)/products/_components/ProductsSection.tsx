@@ -3,7 +3,7 @@ import ProductsCard from "@/components/cards/ProductsCard";
 const ProductsSection = () => {
 	return (
 		<div className="flex flex-col items-center gap-9">
-			<div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-4 md:gap-7">
+			<div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-4 md:gap-5 lg:gap-8">
 				<ProductsCard  />
 				<ProductsCard />
 				<ProductsCard />
